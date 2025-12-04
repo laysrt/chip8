@@ -8,11 +8,11 @@ function add_commit_push (){
     
     if [ "$answer" = 'oui' ]; then
         git commit -m "$V1"
-        git push origin Leandre
+        git push origin Léandre
     
     git add .
     git commit -m "V1"
-    git push origin Leandre
+    git push origin Léandre
     else
         echo "ne fais pas le commit_push"
     fi
