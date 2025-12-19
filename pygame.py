@@ -10,7 +10,7 @@ running = True
 dt = 0
 
 
-RADIUS = 80
+RADIUS = 40
 SCREEN_WIDTH = screen.get_width()
 SCREEN_HEIGHT = screen.get_height()
 FONT_SIZE = 18 # Taille de la police d'écriture
@@ -133,7 +133,7 @@ while running:
     # Déplacement de la boule avec Z/Q/S/D et empeche de faire sortir la boule de l'écran
     keys = pygame.key.get_pressed()
     if keys[pygame.K_z] and ((player_pos.y - RADIUS) > 0):
-        player_pos.y -= (hauteur_ecran/3) * dt
+        player_pos.y -= 300 * dt
     if keys[pygame.K_s] and ((player_pos.y + RADIUS) < hauteur_ecran):
         player_pos.y += 300 * dt
     if keys[pygame.K_q] and ((player_pos.x - RADIUS) > 0):
@@ -154,3 +154,4 @@ while running:
     dt = clock.tick(60) / 1000
 
 pygame.quit()
+
