@@ -1,13 +1,16 @@
 import pygame
 
 pygame.init()
-screen = pygame.display.set_mode((1280, 720)) # Dimension de l'écran
+hauteur_ecran = 720 # Taille de l'ecran
+largeur_ecran = 1280
+
+screen = pygame.display.set_mode((largeur_ecran, hauteur_ecran)) # Dimension de l'écran
 clock = pygame.time.Clock()
 running = True
 dt = 0
 
 
-RADIUS = 40
+RADIUS = 80
 SCREEN_WIDTH = screen.get_width()
 SCREEN_HEIGHT = screen.get_height()
 FONT_SIZE = 18 # Taille de la police d'écriture
@@ -127,15 +130,15 @@ while running:
             elif event.key == pygame.K_n:
                 index_boule = 5
 
-    # Déplacement de la boule avec Z/Q/S/D
+    # Déplacement de la boule avec Z/Q/S/D et empeche de faire sortir la boule de l'écran
     keys = pygame.key.get_pressed()
-    if keys[pygame.K_z]:
-        player_pos.y -= 300 * dt
-    if keys[pygame.K_s]:
+    if keys[pygame.K_z] and ((player_pos.y - RADIUS) > 0):
+        player_pos.y -= (hauteur_ecran/3) * dt
+    if keys[pygame.K_s] and ((player_pos.y + RADIUS) < hauteur_ecran):
         player_pos.y += 300 * dt
-    if keys[pygame.K_q]:
+    if keys[pygame.K_q] and ((player_pos.x - RADIUS) > 0):
         player_pos.x -= 300 * dt
-    if keys[pygame.K_d]:
+    if keys[pygame.K_d] and ((player_pos.x + RADIUS) < largeur_ecran):
         player_pos.x += 300 * dt
 
     # Fond
